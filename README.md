@@ -9,6 +9,10 @@ Previous MFD (Math Formula Detection) tasks mainly focus on detecting math formu
 
 The repo's contribution is that it **provides a way to generate a new dataset suitable for MFD used in grading answer sheets based on the essay dataset**. The main idea is like **CAP** (Cut and Paste), an Augmentation method usually used in 3D-object detection. That is, I cut the formulas in the essay dataset, then paste them at random onto a white paper with scaling or rotation as an augmentation method. Models trained on this generated new dataset can perform very well in this test case.
 
+# Usage
+The use is almost the same to https://github.com/Yuxiang1995/ICDAR2021_MFD, except for the preprocessing part. For preprocessing, you need to run the preprocessing of the original essay dataset first, then you need to run `tools/data_preprocess_CAP.py` for each directory of the dataset. In this python file you can set hyperparameters such as max rotation angle for one formula, min w_h ratio for one formula to be pasted, the range of scaling augmentation, the range number of formulas, max iou and iom, etc for the CAP generating process.
+
+
 # Examples
 Here I provide some examples, showing the effectness of this method to generate dataset and the adaptation ability of models trained on this dataset to different conditions.
 
