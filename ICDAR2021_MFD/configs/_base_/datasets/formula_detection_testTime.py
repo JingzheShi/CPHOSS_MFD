@@ -1,0 +1,91 @@
+dataset_type = 'CocoDataset'
+data_root = '/root/autodl-tmp/nature21/mfd_dataset/'
+classes = ('embedded', 'isolated')
+img_norm_cfg = dict(
+    mean=[220.0,220.0,220.0], std=[20,20,20], to_rgb=True)
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(type='LoadAnnotations', with_bbox=True),
+    dict(type='Resize', img_scale=(1447, 2048), keep_ratio=True),
+    dict(type='RandomCrop', crop_size=(1600, 1440)),
+    dict(type='RandomFlip', flip_ratio=0.5),
+    dict(type='Normalize', **img_norm_cfg),
+    dict(type='Pad', size_divisor=32),
+    dict(type='DefaultFormatBundle'),
+    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),
+]
+test_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        type='MultiScaleFlipAug',
+        img_scale=(1583, 2048),
+        flip=False,
+        transforms=[
+            dict(type='Resize', keep_ratio=True),
+            # dict(type='RandomFlip'),
+            dict(type='Normalize', **img_norm_cfg),
+            dict(type='Pad', size_divisor=32),
+            dict(type='ImageToTensor', keys=['img']),
+            dict(type='Collect', keys=['img']),
+        ])
+]
+data = dict(
+    samples_per_gpu=4,
+    workers_per_gpu=10,
+    train=[
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Tr00/train_coco.json',
+        img_prefix=data_root + 'Tr00/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Tr01/train_coco.json',
+        img_prefix=data_root + 'Tr01/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Tr10/train_coco.json',
+        img_prefix=data_root + 'Tr10/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Va00/train_coco.json',
+        img_prefix=data_root + 'Va00/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Va01/train_coco.json',
+        img_prefix=data_root + 'Va01/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Ts00/train_coco.json',
+        img_prefix=data_root + 'Ts00/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        dict(
+        type=dataset_type,
+        ann_file=data_root + 'Ts01/train_coco.json',
+        img_prefix=data_root + 'Ts01/img/',
+        classes=classes,
+        pipeline=train_pipeline),
+        ],
+    val=dict(
+        type=dataset_type,
+        ann_file=data_root + 'Ts01/train_coco.json',
+        img_prefix=data_root + 'Ts01/img/',
+        classes=classes,
+        pipeline=test_pipeline),
+    test=dict(
+        type=dataset_type,
+        ann_file=data_root + 'Ts10/train_coco.json',
+        img_prefix=data_root + 'Ts10/img/',
+        classes=classes,
+        pipeline=test_pipeline))
+evaluation = dict(interval=1, metric='bbox')
