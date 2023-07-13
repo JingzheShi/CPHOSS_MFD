@@ -10,7 +10,16 @@ Previous MFD (Math Formula Detection) tasks mainly focus on detecting math formu
 The repo's contribution is that it **provides a way to generate a new dataset suitable for MFD used in grading answer sheets based on the essay dataset**. The main idea is like **CAP** (Cut and Paste), an Augmentation method usually used in 3D-object detection. That is, we cut the formulas in the essay dataset, then paste them at random onto a white paper with scaling or rotation as an augmentation method. Models trained on this generated new dataset can perform very well in our test case.
 
 #Examples
-Here we provide some examples, showing the effectness of our generated dataset and the adaptation ability of models trained on this dataset to different conditions.
+Here we provide some examples, showing the effectness of our method to generate dataset and the adaptation ability of models trained on this dataset to different conditions.
+
+Example 1: a comparision of models trained on original essay dataset and models trained on generated dataset.
+
+<img src="example1.jpeg" style = "zoom:40%;"/>
+
+Example 2 and Example 3: the model trained on new dataset performs well on our test cases.
+
+<img src="example2.jpeg" style = "zoom:40%;"/>
+<img src="example3.jpeg" style = "zoom:40%;"/>
 
 # Citations
 ```shell
