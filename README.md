@@ -3,7 +3,7 @@ A repo for math formula detection used in the AI Grading project called Centrali
 
 
 # Summary
-This repository is based on ()[https://github.com/Yuxiang1995/ICDAR2021_MFD]. The contribution of this repository can be concluded as following:
+This repository uses the same model and based on https://github.com/Yuxiang1995/ICDAR2021_MFD. The contribution of this repository can be concluded as following:
 
 Previous MFD (Math Formula Detection) tasks mainly focus on detecting math formulas in essays. In these essays the formulas may be embedded in paragraphs of texts. However in our case of AI Grading for Physics Olympiad, a common case is that there are many formulas lying on the answer sheet with no or very few texts. In other word this is not similar to the training set provided by the essay dataset. Thus models trained on the essay dataset perform poorly in our test case.
 
