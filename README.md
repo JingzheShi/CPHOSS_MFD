@@ -20,7 +20,7 @@ Example 1: a comparision of models trained on original essay dataset and models 
 
 <img src="example1.jpeg" style = "zoom:40%;"/>
 
-Example 2 and Example 3: the model trained on new dataset performs well on this test cases.
+Example 2 and Example 3: the model trained on new dataset performs well on varieties of test cases.
 
 <img src="example2.jpeg" style = "zoom:40%;"/>
 <img src="example3.jpeg" style = "zoom:40%;"/>
